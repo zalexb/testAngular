@@ -1,0 +1,42 @@
+<h3 class="bg-primary p-a-1">{{name}}'s To Do List</h3>
+<div class="btn btn-primary m-t-1 m-l-3">
+  <input class="form-control" type="text" [(ngModel)] = "clean"/>
+  <button class="btn btn-primary" (click)="addItem(clean)">add</button>
+</div>
+<button class="btn btn-info" (click)="changeFilter()" [class] = "color">FilterChanger</button>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Description</th>
+      <th>Done</th>
+      <th>Check</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of getTodoItems(); let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ item.action }}</td>
+      <td><input type="checkbox" [(ngModel)]="item.done"/></td>
+      <td [ngSwitch]="item.done">
+        <span *ngSwitchCase="true">Yes</span>
+        <span *ngSwitchDefault>No</span>
+      </td>
+      <td>
+        <button (click)="showDetails(item.done,item.action)" >Show Details</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<input type="text" [(ngModel)]="name"/>
+<div *ngIf="details; else elseBlock"><span>Work already done</span></div>
+<ng-template #elseBlock><span>You need to do this</span></ng-template>
+<!--<nav>-->
+  <!--<a routerLink="/" routerLinkActive="active">Home</a>-->
+  <!--<a routerLink="/sample" routerLinkActive="active">Sample</a>-->
+  <!--<a routerLink="/sample2" routerLinkActive="active">Sample2</a>-->
+<!--</nav>-->
+<!--<router-outlet></router-outlet>-->
+<app-sample [name] = "actionDetails" ><span>Inside text</span></app-sample>
