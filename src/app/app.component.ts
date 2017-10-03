@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { TodoItem } from './model';
 import { NgModel } from '@angular/forms';
 import {DataService} from './data.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -19,8 +21,9 @@ export class AppComponent {
 	details: boolean = false;
 	workDetails: string = '';
 	actionDetails: string = '';
+	id: number ;
 
-	constructor(private dataService: DataService){
+	constructor(private dataService: DataService, private router: Router){
 	this.model = dataService.getData();
 }
 
@@ -46,15 +49,13 @@ export class AppComponent {
 
   addItem(newItem) {
   	if (newItem !='') {
-  		this.model.items.push(new TodoItem(newItem, false));
+  		this.model.items.push(new TodoItem(newItem, false, this.model.items.length));
   		this.clean = '';
   	}
   }
 
-  showDetails(done,action){
-  	this.actionDetails = action;
-      this.details = done;
-
+  showDetails(id){
+  	this.router.navigate([id + '']);
   }
 
 }

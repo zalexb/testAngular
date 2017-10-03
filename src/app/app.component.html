@@ -24,7 +24,7 @@
         <span *ngSwitchDefault>No</span>
       </td>
       <td>
-        <button (click)="showDetails(item.done,item.action)" >Show Details</button>
+        <button (click)="showDetails(item.id)" >Show Details</button>
       </td>
     </tr>
   </tbody>
@@ -38,10 +38,15 @@
   <!--<a routerLink="/sample" routerLinkActive="active">Sample</a>-->
   <!--<a routerLink="/sample2" routerLinkActive="active">Sample2</a>-->
 <!--</nav>-->
-<!--<router-outlet></router-outlet>-->
+<router-outlet></router-outlet>
 
-<app-counter1></app-counter1><br>
+<app-counter1 ></app-counter1><br>
 <app-counter2></app-counter2><br>
 <app-counter3></app-counter3><br>
 
 <app-sample [name] = "actionDetails" ><span>Inside text</span></app-sample>
+
+<app-cart></app-cart>
+
+<app-products></app-products>
+

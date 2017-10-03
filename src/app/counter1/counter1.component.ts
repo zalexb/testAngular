@@ -13,6 +13,9 @@ export class Counter1Component implements OnInit {
   constructor(private counterService: CounterService) {
 
   }
+  title: string = 'first';
+  nameValue: string ;
+
 
   plusOne(){
     this.counterService.increment();
@@ -24,6 +27,10 @@ export class Counter1Component implements OnInit {
     }
 
   ngOnInit() {
+      console.log((this.title + ' ready'));
+  }
+  changeName(){
+      this.nameValue = 'new' + new Date().getTime();
   }
 
 }

@@ -15,6 +15,7 @@ export class Counter3Component implements OnInit {
     constructor(private counterService: CounterService) {
 
     }
+    title: string = 'thirc';
 
     plusOne(){
         this.counterService.increment();
@@ -26,6 +27,7 @@ export class Counter3Component implements OnInit {
     }
 
   ngOnInit() {
+      console.log((this.title + ' ready'));
   }
 
 }

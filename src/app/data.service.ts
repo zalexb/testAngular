@@ -11,4 +11,8 @@ export class DataService {
   getData(){
     return this.model;
     }
+
+    getSingleAction(id){
+      return this.model.items.filter((data) => data.id == id);
+    }
 }

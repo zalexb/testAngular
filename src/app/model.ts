@@ -5,10 +5,10 @@ export class Model {
 	constructor() {
 		this.user = "Adam";
 		this.items = [
-			new TodoItem("Buy Flowers", false),
-			new TodoItem("Get Shoes", false),
-			new TodoItem("Collect Tickets", false),
-			new TodoItem("Call Joe", false),
+			new TodoItem("Buy Flowers", false,1),
+			new TodoItem("Get Shoes", false,2),
+			new TodoItem("Collect Tickets", false,3),
+			new TodoItem("Call Joe", false,4),
 		]
 	}
 }
@@ -16,8 +16,10 @@ export class Model {
 export class TodoItem {
 	action;
 	done;
+	id;
 
-	constructor(action, done){
+	constructor(action, done,id){
+		this.id = id;
 		this.action = action;
 		this.done = done;
 	}

@@ -1,0 +1,7 @@
+<div class="m-1-2">
+  <span>{{productsQuantity()}} ordered products</span>
+</div>
+<div *ngFor="let product of getOrderedProducts()">
+  <span>{{product}}</span>
+</div>
+<app-products (order)="addProducts($event)"></app-products>
