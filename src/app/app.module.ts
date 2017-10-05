@@ -13,6 +13,10 @@ import { CounterService} from "./counter.service";
 import { CartComponent } from './cart/cart.component';
 import { ProductsComponent } from './products/products.component';
 import { SingleComponent } from './single/single.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGuardService } from './auth-guard/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -24,19 +28,29 @@ import { SingleComponent } from './single/single.component';
     Counter3Component,
     CartComponent,
     ProductsComponent,
-    SingleComponent
+    SingleComponent,
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-        {path: 'sample', component: SampleComponent},
+        {path: 'admin' , component: AdminComponent,
+        canActivate: [AuthGuardService]},
+        {path: 'sample', component: SampleComponent,
+        children:[
+            {path: 'counter1', component: Counter1Component},
+            {path: 'counter2', component: Counter2Component},
+            {path: 'counter3', component: Counter3Component},
+        ]},
         {path: 'sample2', component: Sample2Component},
-        {path: ':id',component: SingleComponent}
+        {path: 'login', component: LoginComponent},
+        {path: ':id', component: SingleComponent},
         // {path: '', component: SampleComponent},
     ])
   ],
-  providers: [DataService,CounterService],
+  providers: [DataService, CounterService, AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,6 +13,6 @@ export class DataService {
     }
 
     getSingleAction(id){
-      return this.model.items.filter((data) => data.id == id);
+      return this.model.items.find((data) => data.id == id);
     }
 }

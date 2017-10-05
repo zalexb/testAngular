@@ -9,12 +9,14 @@ import { DataService } from "../data.service";
 })
 export class SingleComponent implements OnInit {
 
+  action ;
+
   constructor(private router: Router, private activatedRoute:  ActivatedRoute,private dataService: DataService) { }
 
   ngOnInit() {
     this.activatedRoute.params.forEach((params: Params ) => {
-      let id = +params["id"];git
-      this.dataService.getSingleAction(id) ;
+      let id = +params["id"];
+      this.action = this.dataService.getSingleAction(id) ;
     });
   }
 
