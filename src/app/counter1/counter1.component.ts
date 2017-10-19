@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CounterService} from "../counter.service";
+import { CounterService } from '../counter.service';
+
 
 @Component({
   selector: 'app-counter1',
@@ -8,29 +9,25 @@ import {CounterService} from "../counter.service";
 })
 export class Counter1Component implements OnInit {
 
-  private counterComp: number = this.counterService.getValue();
-
-  constructor(private counterService: CounterService) {
-
-  }
+	private counter: number;
   title: string = 'first';
-  nameValue: string ;
 
+  constructor(private counterService: CounterService) { 
 
-  plusOne(){
-    this.counterService.increment();
-    this.counterComp = this.counterService.getValue();
   }
-    minusOne(){
-        this.counterService.decrement();
-        this.counterComp = this.counterService.getValue();
-    }
+
+  plusOne() {
+  	this.counterService.increment();
+  	this.counter = this.counterService.getValue();
+  }
+
+  minusOne() {
+  	this.counterService.decrement();
+  	this.counter = this.counterService.getValue();
+  }
 
   ngOnInit() {
-      console.log((this.title + ' ready'));
-  }
-  changeName(){
-      this.nameValue = 'new' + new Date().getTime();
+    console.log(this.title + 'ready');
   }
 
 }

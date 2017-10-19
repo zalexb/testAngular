@@ -7,23 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  orderedProducts: string[] = [];
+	orderProducts: string [] = [];
 
   constructor() { }
 
+  getOrderProducts () {
+  	return this.orderProducts;
+  }
+
+  addProduct (product) {
+  	this.orderProducts.push(product);
+  }
+
+  productsQuantity () {
+  	if (this.orderProducts){
+  		return this.orderProducts.length;
+  	}
+  }
+
   ngOnInit() {
   }
-    getOrderedProducts(){
-      return this.orderedProducts;
-    }
-    addProducts(product){
-      this.orderedProducts.push(product);
-    }
-    productsQuantity(){
-      if(this.orderedProducts){
-        return this.orderedProducts.length;
-      }
-    }
-
 
 }

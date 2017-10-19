@@ -1,26 +1,21 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sample2',
   templateUrl: './sample2.component.html',
-  styleUrls: ['./sample2.component.css'],
-  inputs: ['value','name']
+  styleUrls: ['./sample2.component.css']
 })
-export class Sample2Component implements OnChanges {
+export class Sample2Component implements OnInit {
 
-  value : number;
-  name : string;
+	boxes = [
+		{title: "NewsOne", text: "Hello world1"},
+		{title: "NewsTwo", text: "Hello world2"},
+		{title: "NewsThree", text: "Hello world3"},
+	]
 
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges) {
-      // console.log('changed');
-    let msgArray: string[] = [];
-    for (let propName in changes){
-      msgArray.push(propName, changes[propName].currentValue,changes[propName].previousValue);
-        console.log(msgArray.join(';'));
-    }
+  ngOnInit() {
   }
-
 
 }

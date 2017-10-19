@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -9,27 +10,29 @@ import { AuthService } from '../auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  userPassword : string;
-  userLogin : string;
-  message : string;
+	userPassword: string;
+	userLogin: string;
+	message: string;
 
-  constructor(public authService : AuthService, public router: Router) {
-    this.setMessage();
+  constructor(public authService: AuthService, public router: Router) { 
+ 	this.setMessage();
   }
+ 
+setMessage() {
+	this.message = 'Logged' + (this.authService.isLoggedIn? "out" : "in");
+	console.log(this.message);
+}
 
-  setMessage(){
-    this.message = "Logged "+(this.authService.isLogged ? "in" : "out") ;
-  }
-  login(){
-    if(this.authService.login(this.userLogin,this.userPassword)){
-      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : "admin";
-      this.router.navigate([redirect]);
-    }
-
-  }
-  logout(){
-    this.authService.logout();
-  }
+login() {
+	this.message = "Trying to log in";
+	this.authService.login(this.userLogin, this.userPassword).subscribe(() => {
+		this.setMessage();
+		if (this.authService.isLoggedIn){
+			let redirect = this.authService.redirectUrl? this.authService.redirectUrl: 'admin'
+			this.router.navigate([redirect]);
+		}
+	});
+}
 
   ngOnInit() {
   }

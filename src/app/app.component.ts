@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { TodoItem } from './model';
 import { NgModel } from '@angular/forms';
-import {DataService} from './data.service';
-import {Router} from '@angular/router';
+import { DataService } from './data.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,22 +11,19 @@ import {Router} from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
-
 export class AppComponent {
-	 model;
+	model;
 	name: string = 'Alex';
 	filter: boolean = true;
 	clean: string = '';
 	color: string = 'btn-warning';
 	details: boolean = false;
-	workDetails: string = '';
-	actionDetails: string = '';
-	id: number ;
+	workDetaild: string = ''; 
+  actionDetails: string;
 
-	constructor(private dataService: DataService, private router: Router){
-	this.model = dataService.getData();
-}
+  constructor (private dataService: DataService, private router: Router) {
+    this.model = dataService.getData();
+  } 
 
   getName() {
   	return this.model.user
@@ -54,7 +52,7 @@ export class AppComponent {
   	}
   }
 
-  showDetails(id){
+  showDetails(id) {
   	this.router.navigate([id + '']);
   }
 

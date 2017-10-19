@@ -1,3 +1,7 @@
 <p>
   admin works!
 </p>
+
+<div *ngIf="!authService.isLoggedIn">
+	<button (click)="logout()">Logout</button>
+</div>

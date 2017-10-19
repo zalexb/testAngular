@@ -1,5 +1,10 @@
+<router-outlet></router-outlet>
+<br>
+<br>
+<app-wiki></app-wiki>
+<br> 
 <h3 class="bg-primary p-a-1">{{name}}'s To Do List</h3>
-<div class="btn btn-primary m-t-1 m-l-3">
+<div class="m-t-1 m-b-1">
   <input class="form-control" type="text" [(ngModel)] = "clean"/>
   <button class="btn btn-primary" (click)="addItem(clean)">add</button>
 </div>
@@ -23,34 +28,19 @@
         <span *ngSwitchCase="true">Yes</span>
         <span *ngSwitchDefault>No</span>
       </td>
-      <td>
-        <button (click)="showDetails(item.id)" >Show Details</button>
-      </td>
+      <td><button (click)="showDetails(item.id)">Show details</button></td>
     </tr>
   </tbody>
 </table>
 
 <input type="text" [(ngModel)]="name"/>
-<div *ngIf="details; else elseBlock"><span>Work already done</span></div>
-<ng-template #elseBlock><span>You need to do this</span></ng-template>
+
+<div *ngIf="details; else elseBlock"><span style="color:black;">This work already done</span></div>
+<ng-template #elseBlock>Yoy need to do this work</ng-template>
 <nav>
-  <a routerLink="/sample" routerLinkActive="active">Sample</a>
-  <!--<a routerLink="/sample" routerLinkActive="active">Sample</a>-->
-  <!--<a routerLink="/sample2" routerLinkActive="active">Sample2</a>-->
+  <a routerLink="/new-page" routerLinkActive="active">new pag</a>
+  <a routerLink="/sample2" routerLinkActive="active">Sample2</a>
 </nav>
-<router-outlet></router-outlet>
+<!-- <app-sample [name] = "actionDetails"><span>awfafgawgawgawgwa</span>Hello</app-sample> -->
 
-<hr>
-<hr>
-<!--<app-counter1 ></app-counter1><br>
-<app-counter2></app-counter2><br>
-<app-counter3></app-counter3><br>-->
-
-<!--<app-sample [name] = "actionDetails" ><span>Inside text</span></app-sample>-->
-
-<app-cart></app-cart>
-
-<!--
-<app-products></app-products>
--->
-
+<!-- <app-cart></app-cart> -->

@@ -1,10 +1,18 @@
-<div>
-  {{name}}
-  <nav>
-    <a routerLink="/sample/counter1" routerLinkActive="active">Counter1</a>
-    <a routerLink="/sample/counter2" routerLinkActive="active">Counter2</a>
-    <a routerLink="/sample/counter3" routerLinkActive="active">Counter3</a>
-  </nav>
 
-  <router-outlet></router-outlet>
-</div>
+<p>
+  {{name}}
+
+  <a 
+  	routerLink="/sample/counter1" 
+  	routerLinkActive="active">
+  counter1
+</a>
+  <a 
+  	routerLink="/sample/counter2" 
+  	routerLinkActive="active">
+  counter2
+</a>
+  <a routerLink="/sample/counter3" routerLinkActive="active">counter3</a>
+</p>
+
+<router-outlet></router-outlet>
